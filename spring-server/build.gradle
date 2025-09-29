@@ -1,0 +1,53 @@
+plugins {
+	id 'java'
+    id 'application' //Needed by mainClassName
+	id 'org.springframework.boot' version '3.5.6'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.abridge'
+version = '0.0.1-SNAPSHOT'
+description = 'Demo project for Spring Boot'
+mainClassName = 'com.abridge.AbridgeApplication'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.postgresql:postgresql'
+//    implementation("com.h2database:h2:1.3.148")
+    //jakarta.persistence-api
+    implementation 'jakarta.persistence:jakarta.persistence-api:3.1.0'
+    //Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    testCompileOnly 'org.projectlombok:lombok:1.18.30'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    //Tests
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+//PROMPT. How do I make a gradleTask to run DatabaseSeedRunner and close?
+tasks.register('seedDb', JavaExec) {
+    group = 'application'
+    description = 'Run DatabaseSeedRunner to seed the database and exit'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.abridge.DatabaseSeedRunnerApp'
+    systemProperty 'spring.profiles.active', 'seed'
+}
+
