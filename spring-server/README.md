@@ -14,7 +14,6 @@
 - [POST] /bridge-link/{:term} (retrieve link by term. And register an audit entry)
 - [GET] /bridge-link/{:term}/analytics (retrieve analytics for a specific term)
 
-
 ## Frameworks/Libraries Used
 - Spring Boot ()
 - Spring Data JPA (for database interactions)
@@ -23,4 +22,5 @@
 - Gradle (build tool)
 - Lombok (for reducing boilerplate code)
 
-
+## LLM Usage
+- Almost exclusively just for prototyping the SQL group by query.

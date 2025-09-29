@@ -85,7 +85,6 @@ public class BridgeLinkController {
 
         ResponseEntity<BridgeLinkAnalyticsResp> response = ResponseEntity.notFound().build();
         if (bridgeLinkAnalyticsResp != null) {
-
             response =  ResponseEntity.ok(bridgeLinkAnalyticsResp);
         }
 

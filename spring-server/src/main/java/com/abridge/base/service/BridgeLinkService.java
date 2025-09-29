@@ -47,6 +47,7 @@ public class BridgeLinkService {
         if (bridgeLink == null) {
            return null;
         }
+
         builder.term(bridgeLink.getTerm());
         builder.createdDate(bridgeLink.getCreatedDate());
         builder.totalRedirects(redirectAuditLogRepository.countByTermEquals(term));

@@ -67,11 +67,6 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 - [X] Analytics Dashboard 
 - [X] Admin Dashboard
 
-## TODO
-
-- [ ] Document LLM Usage
-- [ ] Test new seeding protocol. "update"
-
 ## Future (Things I might have liked to show off but ran out of time)
 - [ ] Fully testing/implementing site-wide Error Boundary
 - [ ] Unit Tests (Jest + React Testing Library)
@@ -81,4 +76,3 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 - [ ] Husky + Prettier (Common Formatting Compliance)
 - [ ] Storybook (Component Library)
 - [ ] Tree Shaking via Barrel Files
-
