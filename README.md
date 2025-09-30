@@ -40,14 +40,18 @@ __
 ## BE Design Notes
 
 ### Trade-Offs / Assumptions
-- Didn't implement migrate script. Handled by boot setup.
-- Dual Entity/Model classes couple BE/FE. Only done here for time.
-- Didn't implement fk constraint between models (Domain was small enough to ignore that for now)
-- Didn't use ID for some operations. Simpler to stick to only one identifier (term)
+- Didn't implement a migration script. Handled by boot setup. (See: Next Steps)
+- I like fail/fast approach with boundaries.. But when not in a crunch, would take a look at important boundaries for more defensive programming and recovery.
+- Dual Entity/Model classes couple BE/FE. Only done here for time. (You can create a thin BE like this, but unless purposeful, it's a design smell)
+- Didn't implement fk constraint between models. Domain didn't require additional complexity (See: Next Steps)
+- Didn't use ID for some operations. Simpler to stick to only one identifier (term) (See: Next Steps)
 - Very thin Controller/Service/Repository barrier. Repositories are fine, but I didn't bother being TOO careful about what was in the Controller Layer.
+- Created only one properties file. Would need to create additional .yml and/or allow intake of properties on run for deploying to any environment.
+- Somewhat fast and loose with date formats and BE <> FE contract trust. (See: defensive programming and recovery)
 
 ### Next Steps
 - Would implement a managed migration framework.
-- Would define perhaps more rigorous Req/Resp Entities.
-- Create proper relational DB models. Create FK
+- Would define perhaps more rigorous Req/Resp Entities with more safeguards around invalid data.
+- Create proper relational DB models. Create FK. Use ids for operational unique-ness.
 - Would like to deploy the whole stack with Docker.
+- Need to have a better proxy setup.
